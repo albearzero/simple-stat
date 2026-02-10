@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleStat - Browser-based Statistical Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Chart.js for visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Papaparse for CSV parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>SimpleStat</h1>
+            <p>Paste your data (Excel/CSV) and analyze instantly.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Data Input Section -->
+        <section id="input-section" class="card">
+            <h2>1. Data Input</h2>
+            <div class="input-controls">
+                <textarea id="data-input" placeholder="Paste your data here from Excel or CSV...&#10;Example:&#10;Name, Score, Age&#10;Alice, 85, 23&#10;Bob, 90, 25"></textarea>
+                <div class="actions">
+                    <button id="load-data-btn" class="primary-btn">Load Data</button>
+                    <button id="clear-data-btn" class="secondary-btn">Clear</button>
+                    <label for="file-upload" class="file-upload-label">Upload CSV</label>
+                    <input type="file" id="file-upload" accept=".csv" style="display: none;">
+                </div>
+            </div>
+            <div id="data-preview" class="hidden">
+                <h3>Data Preview</h3>
+                <div class="table-wrapper">
+                    <table id="data-table"></table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analysis Configuration -->
+        <section id="analysis-section" class="card hidden">
+            <h2>2. Analysis & Visualization</h2>
+            <div class="controls-grid">
+                <div class="control-group">
+                    <label for="chart-type">Chart Type</label>
+                    <select id="chart-type">
+                        <option value="bar">Bar Chart</option>
+                        <option value="line">Line Chart</option>
+                        <option value="scatter">Scatter Plot</option>
+                        <option value="pie">Pie Chart</option>
+                        <option value="doughnut">Doughnut Chart</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="x-axis">X-Axis (Label)</label>
+                    <select id="x-axis"></select>
+                </div>
+                <div class="control-group">
+                    <label for="y-axis">Y-Axis (Value)</label>
+                    <select id="y-axis"></select>
+                </div>
+                <div class="control-group">
+                    <button id="generate-chart-btn" class="primary-btn">Generate Chart</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results-section" class="hidden">
+            <div class="grid-2-col">
+                <div class="card chart-container">
+                    <canvas id="main-chart"></canvas>
+                </div>
+                <div class="card stats-container">
+                    <h3>Descriptive Statistics</h3>
+                    <div id="stats-output">
+                        <p class="placeholder-text">Select a numerical column to see statistics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>SimpleStat - Local Browser Processing. No data is sent to any server.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
