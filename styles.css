@@ -8,6 +8,31 @@
     --accent-color: #f1f5f9;
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #3b82f6;
+        --primary-hover: #60a5fa;
+        --bg-color: #0f172a;
+        --card-bg: #1e293b;
+        --text-color: #f8fafc;
+        --border-color: #334155;
+        --accent-color: #334155;
+    }
+}
+
+/* Accessibility Utilities */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -65,6 +90,13 @@ h3 {
 }
 
 /* Input Section */
+h1,
+h2,
+h3 {
+    text-wrap: balance;
+}
+
+/* Input Section */
 textarea {
     width: 100%;
     height: 150px;
@@ -75,6 +107,8 @@ textarea {
     font-size: 14px;
     resize: vertical;
     margin-bottom: 16px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
 }
 
 textarea:focus {
@@ -83,10 +117,16 @@ textarea:focus {
     box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
 }
 
+textarea:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
 .actions {
     display: flex;
     gap: 12px;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 button {
@@ -97,6 +137,14 @@ button {
     font-size: 14px;
     border: none;
     transition: background 0.2s;
+    touch-action: manipulation;
+    min-height: 44px;
+    /* Touch target size */
+}
+
+button:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }
 
 .primary-btn {
@@ -119,7 +167,8 @@ button {
 }
 
 .file-upload-label {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     padding: 10px 20px;
     background: var(--accent-color);
     border: 1px solid var(--border-color);
@@ -127,6 +176,10 @@ button {
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
+    min-height: 44px;
+    /* Touch target size */
+    color: var(--text-color);
+    touch-action: manipulation;
 }
 
 .file-upload-label:hover {
@@ -140,6 +193,7 @@ button {
     margin-top: 16px;
     border: 1px solid var(--border-color);
     border-radius: 6px;
+    background-color: var(--card-bg);
 }
 
 table {
@@ -148,7 +202,8 @@ table {
     font-size: 14px;
 }
 
-th, td {
+th,
+td {
     text-align: left;
     padding: 10px 16px;
     border-bottom: 1px solid var(--border-color);
@@ -189,13 +244,21 @@ select {
     padding: 10px;
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    background: white;
+    background: var(--card-bg);
+    color: var(--text-color);
     font-size: 14px;
+    min-height: 44px;
+    /* Touch target size */
 }
 
 select:focus {
     outline: none;
     border-color: var(--primary-color);
+}
+
+select:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }
 
 /* Results */

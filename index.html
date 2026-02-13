@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
     <title>SimpleStat - Browser-based Statistical Analysis</title>
     <link rel="stylesheet" href="styles.css">
     <!-- Chart.js for visualization -->
@@ -10,10 +12,11 @@
     <!-- Papaparse for CSV parsing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 </head>
+
 <body>
     <header>
         <div class="container">
-            <h1>SimpleStat</h1>
+            <h1>NU SimpleStat</h1>
             <p>Paste your data (Excel/CSV) and analyze instantly.</p>
         </div>
     </header>
@@ -23,7 +26,9 @@
         <section id="input-section" class="card">
             <h2>1. Data Input</h2>
             <div class="input-controls">
-                <textarea id="data-input" placeholder="Paste your data here from Excel or CSV...&#10;Example:&#10;Name, Score, Age&#10;Alice, 85, 23&#10;Bob, 90, 25"></textarea>
+                <label for="data-input" class="sr-only">Data Input (CSV/Excel)</label>
+                <textarea id="data-input" autocomplete="off"
+                    placeholder="Paste your data here from Excel or CSV...&#10;Example:&#10;Name, Score, Age&#10;Alice, 85, 23&#10;Bob, 90, 25"></textarea>
                 <div class="actions">
                     <button id="load-data-btn" class="primary-btn">Load Data</button>
                     <button id="clear-data-btn" class="secondary-btn">Clear</button>
@@ -91,4 +96,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
