@@ -8,17 +8,7 @@
     --accent-color: #f1f5f9;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --primary-color: #3b82f6;
-        --primary-hover: #60a5fa;
-        --bg-color: #0f172a;
-        --card-bg: #1e293b;
-        --text-color: #f8fafc;
-        --border-color: #334155;
-        --accent-color: #334155;
-    }
-}
+/* Dark mode removed to enforce light theme */
 
 /* Accessibility Utilities */
 .sr-only {
